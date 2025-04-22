@@ -27,6 +27,11 @@
   <!-- ... (Your remaining <style> and HTML continues here) ... -->
 
   <style>
+  *{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
     html, body {
       margin: 0;
       padding: 0;
@@ -45,7 +50,7 @@
       text-align: center;
       background: url('front-bg2.jpg') no-repeat center/cover;
       color: #333;
-      padding: 0 20px 0 0;
+      padding: 0 20px;
       transition: opacity 1s ease;
       position: fixed;
       top: 0;
@@ -90,15 +95,38 @@
       background-size: cover;
       background-position: center;
       transition: background-image 1s ease-in-out, opacity 1s ease-in-out;
+
     }
 
     header h1 {
       font-family: 'Taviraj', serif;
-      font-size: 3.5rem;
+      font-size: 3rem;
       margin: 0;
       font-weight: 400;
     }
+    .first-name{
+      display: block;
+      text-align: left;
+      padding: 0;
+    }
 
+   .and{
+      display: block;
+      text-align: center;
+      background: url('heart.png');
+      background-size: cover;
+      height: 50px;
+      width:50px;
+      margin: -20px auto 0 auto;
+    }
+    
+    .and img{
+     height:0px;
+    }
+       .second-name {
+     display: block;
+     text-align: right;
+   }
     header p {
       font-size: 1.4rem;
       margin-top: 10px;
@@ -221,7 +249,9 @@
 
   <!-- Main Content Starts -->
   <header id="hero-header">
-    <h1>सिद्धार्थ आणि कियारा</h1>
+    <h1><span class="first-name">सिद्धार्थ </span> <span class="and"><img src="heart.png">
+      <!--Tab to edit-->
+    </img></span> <span class="second-name">कियारा</span> </h1>
     <p>लग्नबंधनात अडकत आहेत!</p>
     <p>२५ डिसेंबर २०२५, जयपूर, भारत</p>
   </header>
@@ -297,7 +327,7 @@
       const guest = new URLSearchParams(window.location.search).get("name");
       if (guest) document.getElementById("guest-name").textContent = decodeURIComponent(guest);
 
-      let seconds = 5;
+      let seconds = 0;
       const counter = document.getElementById("countdown");
       const welcome = document.getElementById("welcome-screen");
 
@@ -341,4 +371,4 @@
   </script>
 
 </body>
-                         </html>
+</html>
