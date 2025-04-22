@@ -95,7 +95,7 @@
       background-size: cover;
       background-position: center;
       transition: background-image 1s ease-in-out, opacity 1s ease-in-out;
-
+      height:80vh;
     }
 
     header h1 {
@@ -145,7 +145,33 @@
       font-family: 'Taviraj', serif;
       color: #d77a61;
     }
+.invitees{
+  height: 80vh;
+  width:100%;
+  background: #f8e1da;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: auto;
+  text-align: center;
+}
+.invitees .family-title{
+  font-size: 2.2rem;
+      text-align: center;
+      font-family: 'Taviraj', serif;
+      color: #f6ffe3;
+      text-shadow: 0px 0px 4px rgba(0,0,0,0.5);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.invitees ul{
+list-style-type: none;
+margin:0 auto 0px auto;
+}
 
+ul li{
+  margin: auto;
+}
     .event {
       background: #fdf1ec;
       padding: 20px;
@@ -212,11 +238,12 @@
 
     .countdown .box {
       background: #f6ffe3;
-      padding: 20px 15px;
+      width:30%;
+      padding: 20px 0px;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      min-width: 90px;
       transition: all 0.3s ease;
+      text-align: center;
     }
 
     .countdown .box:hover {
@@ -241,7 +268,7 @@
   <!-- Welcome Screen in Marathi -->
   <div id="welcome-screen">
     <h2>नमस्कार</h2>
-    <h1 id="guest-name"></h1>
+    <h1 id="guest-name">आपलं नाव</h1>
     <div>आमच्या लग्न समारंभात आपले हार्दिक स्वागत आहे</div>
     <div style="margin-top: 10px;">आपली उपस्थिती आणि आशीर्वाद यांची अपेक्षा आहे</div>
     <div style="margin-top: 10px;">पृष्ठ उघडत आहे <strong id="countdown">५</strong> सेकंदांत...</div>
@@ -249,15 +276,13 @@
 
   <!-- Main Content Starts -->
   <header id="hero-header">
-    <h1><span class="first-name">सिद्धार्थ </span> <span class="and"><img src="heart.png">
-      <!--Tab to edit-->
-    </img></span> <span class="second-name">कियारा</span> </h1>
+    <h1><span class="first-name">सिद्धार्थ </span> <span class="and"></span> <span class="second-name">कियारा</span> </h1>
     <p>लग्नबंधनात अडकत आहेत!</p>
     <p>२५ डिसेंबर २०२५, जयपूर, भारत</p>
   </header>
 
   <section>
-    <h2 class="section-title">लग्नासाठी उर्वरित वेळ</h2>
+    <h2 class="section-title">मुहुर्त वेळ</h2>
     <div class="countdown">
       <div class="box"><div class="number" id="days">00</div><div class="label">दिवस</div></div>
       <div class="box"><div class="number" id="hours">00</div><div class="label">तास</div></div>
@@ -266,6 +291,27 @@
     </div>
   </section>
 
+<section class="invitees">
+  <h2 class="section-title">निमंत्रक
+    <!--Tab to edit-->
+  </h1>
+  <h2 class="family-title">
+    पाटील परिवार
+  </h2>
+  <ul>
+  <li>श्री. राहुल रामभाऊ पाटील</li>
+  <li>श्री. दीपक रामभाऊ पाटील</li>
+  <li>चि. सोमनाथ राहुल पाटील</li>
+</ul>
+<h2 class="family-title">
+    सोनवणे परिवार
+  </h2>
+  <ul>
+    <li>श्री. राहुल रामभाऊ सोनवणे</li>
+    <li>श्री. दीपक रामभाऊ सोनवणे</li>
+    <li>चि. सोमनाथ राहुल सोनवणे</li>
+  </ul>
+</section>
   <section>
     <h2 class="section-title">आमची गोष्ट</h2>
     <p style="text-align: center; font-size: 1.3rem;">एका साध्या हॅलो पासून सुरू झालेली आमची गोष्ट आता जीवनभराच्या प्रवासात रूपांतरित होत आहे.</p>
