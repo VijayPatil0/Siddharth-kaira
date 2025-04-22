@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Custom Invite Link Generator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Noto Sans Devanagari', sans-serif;
+      background: #f8f0e5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 50px 20px;
+    }
+
+    h1 {
+      color: #d77a61;
+      margin-bottom: 20px;
+      font-size: 2rem;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: 250px;
+      font-size: 1.2rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-top: 10px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      background: #d77a61;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .link-output {
+      margin-top: 30px;
+      background: #fff5f1;
+      padding: 20px;
+      border-radius: 10px;
+      word-wrap: break-word;
+      max-width: 90%;
+      text-align: center;
+    }
+
+    .copy-btn, .visit-btn, .whatsapp-btn {
+      margin-top: 10px;
+      font-size: 1rem;
+      padding: 7px 15px;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .copy-btn { background: #555; }
+    .visit-btn { background: #0a7c86; }
+    .whatsapp-btn { background: #25d366; }
+  </style>
+</head>
+<body>
+
+  <h1>तुमचं खास आमंत्रण लिंक तयार करा</h1>
+  
+  <input type="text" id="nameInput" placeholder="पाहुण्यांचे नाव टाका " />
+  <input type="text" id="whatsappInput" placeholder="व्हाट्सअ‍ॅप नंबर टाका (91xxxxxxxxxx)" />
+  
+  <button onclick="generateLink()">लिंक तयार करा</button>
+
+  <div class="link-output" id="linkBox" style="display: none;">
+    <p><strong>तुमचं आमंत्रण लिंक:</strong></p>
+    <p id="customLink"></p>
+    <button class="copy-btn" onclick="copyLink()">कॉपी करा</button>
+    <button class="visit-btn" onclick="visitLink()">साइटला जा</button>
+    <button class="whatsapp-btn" onclick="sendOnWhatsApp()">WhatsApp वर पाठवा</button>
+  </div>
+
+  <script>
+    let currentUrl = '';
+
+    function generateLink() {
+      const name = document.getElementById('nameInput').value.trim();
+      if (!name) return alert("कृपया नाव भरा");
+
+      const encodedName = encodeURIComponent(name);
+      currentUrl = `https://bc296e34-8e83-450f-ab87-1ca33b536875-00-bifkt66jrymh.sisko.replit.dev/?name=${encodedName}`;
+
+      document.getElementById('customLink').textContent = currentUrl;
+      document.getElementById('linkBox').style.display = 'block';
+    }
+
+    function copyLink() {
+      if (currentUrl) {
+        navigator.clipboard.writeText(currentUrl).then(() => {
+          alert("लिंक कॉपी झाली आहे!");
+        });
+      }
+    }
+
+    function visitLink() {
+      if (currentUrl) {
+        window.open(currentUrl, '_blank');
+      }
+    }
+
+    function sendOnWhatsApp() {
+      const phone = document.getElementById('whatsappInput').value.trim();
+      if (!phone.match(/^\d{10,13}$/)) {
+        alert("कृपया वैध व्हाट्सअ‍ॅप नंबर टाका (उदा. 91xxxxxxxxxx)");
+        return;
+      }
+
+      if (!currentUrl) {
+        generateLink(); // Ensure link exists
+      }
+
+      const msg = encodeURIComponent(`नमस्कार! तुमच्यासाठी खास आमंत्रण लिंक: ${currentUrl}`);
+      const whatsappUrl = `https://wa.me/+91${phone}?text=${msg}`;
+      window.open(whatsappUrl, '_blank');
+    }
+  </script>
+
+</body>
+</html>

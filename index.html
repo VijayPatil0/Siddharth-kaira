@@ -1,0 +1,325 @@
+
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>सिद्धार्थ आणि कियारा यांचे लग्न</title>
+  <link href="https://fonts.googleapis.com/css2?family=Taviraj:ital,wght@0,400;1,400&family=Noto+Sans+Devanagari&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      max-width: 100vw;
+      overflow: hidden;
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    #welcome-screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      background: url('front-bg2.jpg') no-repeat center/cover;
+      color: #333;
+      padding: 0 20px 0 0;
+      transition: opacity 1s ease;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 10;
+    }
+
+    #welcome-screen.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #welcome-screen h2 {
+      font-size: 1.8rem;
+      color: #d77a61;
+      font-family: 'Noto Sans Devanagari', serif;
+      margin-top: -40%;
+    }
+
+    #welcome-screen h1 {
+      font-size: 2.3rem;
+      margin: 10px 0;
+      font-family: 'Noto Sans Devanagari', serif;
+    }
+
+    #welcome-screen div {
+      max-width: 90%;
+      line-height: 1.6;
+      font-family: 'Noto Sans Devanagari', serif;
+    }
+
+    body.show-content {
+      overflow: auto;
+    }
+
+    header {
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      transition: background-image 1s ease-in-out, opacity 1s ease-in-out;
+    }
+
+    header h1 {
+      font-family: 'Taviraj', serif;
+      font-size: 3.5rem;
+      margin: 0;
+      font-weight: 400;
+    }
+
+    header p {
+      font-size: 1.4rem;
+      margin-top: 10px;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      text-align: center;
+      font-family: 'Taviraj', serif;
+      color: #d77a61;
+    }
+
+    .event {
+      background: #fdf1ec;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .event h3 {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+      font-family: 'Taviraj', serif;
+      font-weight: 400;
+    }
+
+    .rsvp-form input,
+    .rsvp-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1.1rem;
+    }
+
+    .rsvp-form button {
+      background: #d77a61;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      height: auto;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #f8e1da;
+      color: #555;
+      font-size: 1.4rem;
+      font-family: 'Taviraj', serif;
+    }
+
+    .countdown {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      gap: 30px;
+    }
+
+    .countdown .box {
+      background: #f6ffe3;
+      padding: 20px 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      min-width: 90px;
+      transition: all 0.3s ease;
+    }
+
+    .countdown .box:hover {
+      transform: scale(1.05);
+    }
+
+    .countdown .number {
+      font-size: 2rem;
+      color: #333;
+      font-weight: 600;
+    }
+
+    .countdown .label {
+      font-size: 1rem;
+      color: #888;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Welcome Screen in Marathi -->
+  <div id="welcome-screen">
+    <h2>नमस्कार</h2>
+    <h1 id="guest-name">आपलं नाव</h1>
+    <div>आमच्या लग्न समारंभात आपले हार्दिक स्वागत आहे</div>
+    <div style="margin-top: 10px;">आपली उपस्थिती आणि आशीर्वाद यांची अपेक्षा आहे</div>
+    <div style="margin-top: 10px;">पृष्ठ उघडत आहे <strong id="countdown">५</strong> सेकंदांत...</div>
+  </div>
+
+  <!-- Main Content Starts -->
+  <header id="hero-header">
+    <h1>सिद्धार्थ आणि कियारा</h1>
+    <p>लग्नबंधनात अडकत आहेत!</p>
+    <p>२५ डिसेंबर २०२५, जयपूर, भारत</p>
+  </header>
+
+  <section>
+    <h2 class="section-title">लग्नासाठी उर्वरित वेळ</h2>
+    <div class="countdown">
+      <div class="box"><div class="number" id="days">00</div><div class="label">दिवस</div></div>
+      <div class="box"><div class="number" id="hours">00</div><div class="label">तास</div></div>
+      <div class="box"><div class="number" id="minutes">00</div><div class="label">मिनिटे</div></div>
+      <div class="box"><div class="number" id="seconds">00</div><div class="label">सेकंद</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">आमची गोष्ट</h2>
+    <p style="text-align: center; font-size: 1.3rem;">एका साध्या हॅलो पासून सुरू झालेली आमची गोष्ट आता जीवनभराच्या प्रवासात रूपांतरित होत आहे.</p>
+  </section>
+
+  <section>
+    <h2 class="section-title">कार्यक्रम माहिती</h2>
+    <div class="event"><h3>लग्न समारंभ</h3><p>२५ डिसेंबर २०२५, सकाळी ११:०० - सिटी पॅलेस, जयपूर</p></div>
+    <div class="event"><h3>संध्याकाळचा सत्कार</h3><p>२५ डिसेंबर २०२५, संध्या ७:०० - फेअरमाँट हॉटेल, जयपूर</p></div>
+  </section>
+
+  <section>
+    <h2 class="section-title">आरएसव्हीपी</h2>
+    <form class="rsvp-form" onsubmit="submitRSVP(event)">
+      <input type="text" placeholder="तुमचं नाव" required />
+      <input type="email" placeholder="तुमचा ईमेल" required />
+      <textarea placeholder="संदेश (ऐच्छिक)"></textarea>
+      <button type="submit">सबमिट करा</button>
+    </form>
+    <p id="rsvp-message" style="text-align: center; color: green; font-weight: bold; font-size: 1.2rem;"></p>
+  </section>
+
+  <section>
+    <h2 class="section-title">फोटो गॅलरी</h2>
+    <div class="gallery">
+      <img src="img1.jpg" alt="Couple">
+      <img src="img2.jpg" alt="Ceremony">
+      <img src="img3.jpg" alt="Reception">
+      <img src="img4.jpg" alt="Bride">
+      <img src="img5.jpg" alt="Groom">
+      <img src="img6.jpg" alt="Family">
+      <img src="img7.jpg" alt="Celebration">
+    </div>
+  </section>
+
+  <footer>
+    प्रेमपूर्वक आमंत्रण, सिद्धार्थ आणि कियारा
+  </footer>
+
+  <script>
+    const images = ['img1.jpg','img2.jpg','img3.jpg','img4.jpg','img5.jpg','img6.jpg','img7.jpg'];
+    let index = 0;
+    const header = document.getElementById('hero-header');
+
+    function changeBackground() {
+      header.style.opacity = 0;
+      setTimeout(() => {
+        header.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('${images[index]}')`;
+        header.style.opacity = 1;
+      }, 500);
+      index = (index + 1) % images.length;
+    }
+
+    setInterval(changeBackground, 4000);
+
+    window.onload = () => {
+      changeBackground();
+
+      const guest = new URLSearchParams(window.location.search).get("name");
+      if (guest) document.getElementById("guest-name").textContent = decodeURIComponent(guest);
+
+      let seconds = 5;
+      const counter = document.getElementById("countdown");
+      const welcome = document.getElementById("welcome-screen");
+
+      document.body.classList.remove("show-content");
+
+      const interval = setInterval(() => {
+        seconds--;
+        counter.textContent = seconds;
+        if (seconds <= 0) {
+          clearInterval(interval);
+          welcome.classList.add('fade-out');
+          setTimeout(() => {
+            welcome.style.display = "none";
+            document.body.classList.add("show-content");
+          }, 1000);
+        }
+      }, 1000);
+    };
+
+    function submitRSVP(e) {
+      e.preventDefault();
+      document.getElementById("rsvp-message").textContent = "तुमच्या प्रतिसादाबद्दल धन्यवाद!";
+      e.target.reset();
+    }
+
+    const countdownDate = new Date("2025-12-25T11:00:00").getTime();
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
+      if (distance < 0) {
+        document.querySelector(".countdown").innerHTML = "<h2>लग्न सुरू झाले आहे!</h2>";
+        return;
+      }
+      document.getElementById("days").textContent = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
+      document.getElementById("hours").textContent = String(Math.floor((distance / (1000 * 60 * 60)) % 24)).padStart(2, '0');
+      document.getElementById("minutes").textContent = String(Math.floor((distance / (1000 * 60)) % 60)).padStart(2, '0');
+      document.getElementById("seconds").textContent = String(Math.floor((distance / 1000) % 60)).padStart(2, '0');
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+
+</body>
+</html>
